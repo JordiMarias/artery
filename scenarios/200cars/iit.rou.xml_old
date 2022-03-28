@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on Wed 10 Nov 2021 07:42:29 PM UTC by Eclipse SUMO netedit Version 1.8.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
+
+    <input>
+        <sumo-net-file value="iit.net.xml"/>
+    </input>
+
+    <output>
+        <output-file value="iit.net.xml"/>
+        <output.street-names value="true"/>
+    </output>
+
+    <processing>
+        <geometry.min-radius.fix.railways value="false"/>
+        <geometry.max-grade.fix value="false"/>
+        <offset.disable-normalization value="true"/>
+        <lefthand value="false"/>
+    </processing>
+
+    <junctions>
+        <no-turnarounds value="true"/>
+        <junctions.corner-detail value="5"/>
+        <junctions.limit-turn-speed value="5.5"/>
+        <rectangular-lane-cut value="false"/>
+    </junctions>
+
+    <pedestrian>
+        <walkingareas value="false"/>
+    </pedestrian>
+
+    <netedit>
+        <route-files value="/home/veins/Desktop/Places/IIT/iit.rou.xml"/>
+    </netedit>
+
+    <report>
+        <aggregate-warnings value="5"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <trip id="vehicle_0" depart="0.00" departSpeed="5.00" from="-435542917#2" to="-435558489"/>
+    <trip id="vehicle_15" depart="0.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_16" depart="0.00" from="314011263#0" to="435559509#0"/>
+    <trip id="vehicle_17" depart="0.00" from="255623676#0" to="435561332#0"/>
+    <trip id="vehicle_18" depart="0.00" from="314011263#0" to="316907582#0" via="-499084041#2 294592601#2"/>
+    <trip id="vehicle_19" depart="0.00" from="314011263#0" to="316907582#0" via="-24079931#2"/>
+    <trip id="vehicle_2" depart="0.00" from="314011263#0" to="316907582#0" via="-153273211#2 488356723#1 435559508#0 -312901457#1"/>
+    <trip id="vehicle_20" depart="0.00" from="314011263#0" to="316907582#0" via="-312901457#3"/>
+    <trip id="vehicle_21" depart="0.00" from="255623676#0" to="435542908" via="-312901457#1"/>
+    <trip id="vehicle_22" depart="0.00" from="255623676#0" to="435542913#0" via="488356723#1"/>
+    <trip id="vehicle_3" depart="0.00" from="294592601#0" to="435559509#0" via="-499084041#2 435559511#0 -488356723#2 312901457#2"/>
+    <trip id="vehicle_8" depart="0.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_1" depart="4.00" departSpeed="5.00" from="-435542917#2" to="-435558489"/>
+    <trip id="vehicle_9" depart="10.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_10" depart="20.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_11" depart="30.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_4" depart="30.00" from="-435542917#2" to="-435558489"/>
+    <trip id="vehicle_12" depart="40.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_5" depart="40.00" from="-435542917#2" to="-435558489"/>
+    <trip id="vehicle_13" depart="50.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_6" depart="50.00" from="-435542917#2" to="-435558489"/>
+    <trip id="vehicle_14" depart="60.00" from="435558489" to="435542917#0"/>
+    <trip id="vehicle_7" depart="60.00" from="-435542917#2" to="-435558489"/>
+</routes>

@@ -4,10 +4,11 @@
 * Licensed under GPLv2, see COPYING file for detailed license and warranty terms.
 */
 
-#ifndef ARTERY_CASERVICE_H_
-#define ARTERY_CASERVICE_H_
+#ifndef ARTERY_YuCaService_H_
+#define ARTERY_YuCaService_H_
 
 #include "artery/application/ItsG5BaseService.h"
+#include "artery/application/YuStorage.h"
 #include "artery/utility/Channel.h"
 #include "artery/utility/Geometry.h"
 #include <vanetza/asn1/cam.hpp>
@@ -19,6 +20,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+
 
 namespace artery
 {
@@ -42,11 +44,11 @@ class NetworkInterfaceTable;
 class Timer;
 class VehicleDataProvider;
 
-class CaService : public ItsG5BaseService
+class YuCaService : public ItsG5BaseService
 {
 	public:
-		CaService();
-		~CaService();
+		YuCaService();
+		~YuCaService();
 		void initialize() override;
 		void indicate(const vanetza::btp::DataIndication&, std::unique_ptr<vanetza::UpPacket>) override;
 		void trigger() override;
@@ -88,6 +90,8 @@ class CaService : public ItsG5BaseService
 		std::ofstream sended_;
 		std::ofstream received_;
 		std::ofstream positioned_;
+
+		YuStorage storage_;
 };
 
 vanetza::asn1::Cam createCooperativeAwarenessMessage(const VehicleDataProvider&, uint16_t genDeltaTime);
@@ -95,4 +99,4 @@ void addLowFrequencyContainer(vanetza::asn1::Cam&, unsigned pathHistoryLength = 
 
 } // namespace artery
 
-#endif /* ARTERY_CASERVICE_H_ */
+#endif /* ARTERY_YuCaService_H_ */

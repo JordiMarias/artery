@@ -4,8 +4,8 @@
 * Licensed under GPLv2, see COPYING file for detailed license and warranty terms.
 */
 
-#ifndef ARTERY_CASERVICE_H_
-#define ARTERY_CASERVICE_H_
+#ifndef ARTERY_AoiCaService_H_
+#define ARTERY_AoiCaService_H_
 
 #include "artery/application/ItsG5BaseService.h"
 #include "artery/utility/Channel.h"
@@ -23,6 +23,10 @@
 namespace artery
 {
 
+class NetworkInterfaceTable;
+class Timer;
+class VehicleDataProvider;
+
 struct VelocityXY {
     double x;
     double y;
@@ -38,15 +42,11 @@ struct PositionXYOwn {
     double y;
 };
 
-class NetworkInterfaceTable;
-class Timer;
-class VehicleDataProvider;
-
-class CaService : public ItsG5BaseService
+class AoiCaService : public ItsG5BaseService
 {
 	public:
-		CaService();
-		~CaService();
+		AoiCaService();
+		~AoiCaService();
 		void initialize() override;
 		void indicate(const vanetza::btp::DataIndication&, std::unique_ptr<vanetza::UpPacket>) override;
 		void trigger() override;
@@ -72,8 +72,12 @@ class CaService : public ItsG5BaseService
 		unsigned mGenCamLowDynamicsLimit;
 		Position mLastCamPosition;
 		vanetza::units::Velocity mLastCamSpeed;
+        vanetza::units::Acceleration mLastCamAcceleration;
 		vanetza::units::Angle mLastCamHeading;
-		vanetza::units::Acceleration mLastCamAcceleration;
+        PositionXYOwn lastCAMPosition;
+        VelocityXY lastCAMVelocity;
+        AccelerationXY lastCAMAcceleration;
+        
 		omnetpp::SimTime mLastCamTimestamp;
 		omnetpp::SimTime mLastLowCamTimestamp;
 		vanetza::units::Angle mHeadingDelta;
@@ -81,9 +85,6 @@ class CaService : public ItsG5BaseService
 		vanetza::units::Velocity mSpeedDelta;
 		bool mDccRestriction;
 		bool mFixedRate;
-		PositionXYOwn lastCAMPosition;
-        VelocityXY lastCAMVelocity;
-        AccelerationXY lastCAMAcceleration;
 
 		std::ofstream sended_;
 		std::ofstream received_;
@@ -95,4 +96,4 @@ void addLowFrequencyContainer(vanetza::asn1::Cam&, unsigned pathHistoryLength = 
 
 } // namespace artery
 
-#endif /* ARTERY_CASERVICE_H_ */
+#endif /* ARTERY_AoiCaService_H_ */

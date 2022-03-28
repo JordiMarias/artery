@@ -1,0 +1,10 @@
+<configuration>
+    <input>
+        <net-file value="iit.net.xml"/>
+        <route-files value="iit.rou.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="20000"/>
+    </time>
+</configuration>

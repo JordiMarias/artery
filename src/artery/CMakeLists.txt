@@ -2,7 +2,10 @@ add_library(artery INTERFACE)
 add_library(core SHARED
     StaticNodeManager.cc
     application/CaObject.cc
+    application/YuStorage.cc
     application/CaService.cc
+    application/AoiCaService.cc
+    application/YuCaService.cc
     application/DenmObject.cc
     application/DenService.cc
     application/ExampleService.cc
