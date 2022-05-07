@@ -155,11 +155,15 @@ double YuStorage::compute_penalty(const CAM_t& received_cam, const CAM_t& last_c
     double current_speed = received_cam.cam.camParameters.highFrequencyContainer.choice.basicVehicleContainerHighFrequency.speed.speedValue/100;
     double current_speed_x = current_speed*std::cos(current_heading*(pi/360));
     double current_speed_y = current_speed*std::sin(current_heading*(pi/360));
+    // double penalty = std::sqrt(
+    //     (predicted_x-current_x)*(predicted_x-current_x)+
+    //     (predicted_y-current_y)*(predicted_y-current_y)+
+    //     (predicted_speed_x-current_speed_x)*(predicted_speed_x-current_speed_x)+
+    //     (predicted_speed_y-current_speed_y)*(predicted_speed_y-current_speed_y)
+    // );
     double penalty = std::sqrt(
         (predicted_x-current_x)*(predicted_x-current_x)+
-        (predicted_y-current_y)*(predicted_y-current_y)+
-        (predicted_speed_x-current_speed_x)*(predicted_speed_x-current_speed_x)+
-        (predicted_speed_y-current_speed_y)*(predicted_speed_y-current_speed_y)
+        (predicted_y-current_y)*(predicted_y-current_y)
     );
     // trace_ << "    predicted x:" << predicted_x << std::endl;
     // trace_ << "    predicted y:" << predicted_y << std::endl;

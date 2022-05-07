@@ -319,17 +319,19 @@ void YuCaService::checkTriggeringConditions(const SimTime& T_now)
     };
 
     
-    double l2_norm = std::sqrt(differ_velocity.x+differ_velocity.y+differ_position.x+differ_position.y);
+    // double l2_norm = std::sqrt(differ_velocity.x+differ_velocity.y+differ_position.x+differ_position.y);
+	double l2_norm = std::sqrt(differ_position.x+differ_position.y);
     int cam_sent = 0;
 	uint16_t receivedDeltaTimeMod = countTaiMilliseconds(mTimer->getTimeFor(T_now));
 	double penalty = storage_.get_penalties(receivedDeltaTimeMod);
-	double real_penalty = penalty;
-	penalty = penalty/100;
-	if(penalty>6){
-		penalty = 6.0;
-	}
-	
-	if(l2_norm>penalty)
+	// double real_penalty = penalty;
+	// penalty = penalty/100;
+	// if(penalty>6){
+	// 	penalty = 6.0;
+	// }
+	alpha = 0.6;
+	double final_value = alpha*l2_norm+(1-alpha)*penalty;
+	if(final_value>6)
 	{
 		sendCam(T_now);
 	 	cam_sent = 1;
@@ -351,8 +353,8 @@ void YuCaService::checkTriggeringConditions(const SimTime& T_now)
 	positioned_ << current_velocity.y << ",";
 	positioned_ << current_acceleration.x << ",";
 	positioned_ << current_acceleration.y << ",";
-	positioned_ << l2_norm << ",";
-	positioned_ << std::to_string(real_penalty) << ",";
+	positioned_ << final_value << ",";
+	positioned_ << std::to_string(penalty) << ",";
 	positioned_ << cam_sent << std::endl;
 }
 
