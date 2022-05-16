@@ -320,7 +320,7 @@ void YuCaService::checkTriggeringConditions(const SimTime& T_now)
 
     
     // double l2_norm = std::sqrt(differ_velocity.x+differ_velocity.y+differ_position.x+differ_position.y);
-	double l2_norm = std::sqrt(differ_position.x+differ_position.y);
+	double local_paoi = std::sqrt(differ_position.x+differ_position.y);
     int cam_sent = 0;
 	uint16_t receivedDeltaTimeMod = countTaiMilliseconds(mTimer->getTimeFor(T_now));
 	double penalty = storage_.get_penalties(receivedDeltaTimeMod);
@@ -329,8 +329,8 @@ void YuCaService::checkTriggeringConditions(const SimTime& T_now)
 	// if(penalty>6){
 	// 	penalty = 6.0;
 	// }
-	alpha = 0.6;
-	double final_value = alpha*l2_norm+(1-alpha)*penalty;
+	alpha = 0.9;
+	double final_value = alpha*local_paoi+(1-alpha)*penalty;
 	if(final_value>6)
 	{
 		sendCam(T_now);
