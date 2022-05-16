@@ -329,7 +329,7 @@ void YuCaService::checkTriggeringConditions(const SimTime& T_now)
 	// if(penalty>6){
 	// 	penalty = 6.0;
 	// }
-	alpha = 0.9;
+	float alpha = 0.9;
 	double final_value = alpha*local_paoi+(1-alpha)*penalty;
 	if(final_value>6)
 	{
