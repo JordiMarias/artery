@@ -395,7 +395,7 @@ void AoiCaService::sendCam(const SimTime& T_now)
 	sended_ << std::to_string(latitude) << ",";
 	sended_ << std::to_string(longitude) << ",";
 	sended_ << std::to_string(mVehicleDataProvider->position().x/boost::units::si::meter) << ",";
-	sended_ << std::to_string(mVehicleDataProvider->position().x/boost::units::si::meter);
+	sended_ << std::to_string(mVehicleDataProvider->position().y/boost::units::si::meter);
 	sended_ << std::endl;
 
 	using namespace vanetza;
