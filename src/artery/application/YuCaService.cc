@@ -237,7 +237,7 @@ void YuCaService::initialize()
 	positioned_.open(positioned_str.c_str(), std::ofstream::out | std::ofstream::app);
 	sended_ << "Sent Time,Simulation Time,Origin Latitude,Origin Longitude,X,Y" << std::endl;
 	received_ << "Station ID,Sent Time,Received Time,Received Simulation Time,Origin Latitude,Origin Longitude,Destiny Latitude,Destiny Longitude,Destiny X,Destiny Y" << std::endl;
-	positioned_ << "Simulation Time,Delta Time,Predicted Position X,Predicted Position Y,Real Postition X,Real Position Y,Real Position Latitude,Real Position Longitude,Predicted Speed X,Predicted Speed Y,Real Speed X,Real Speed Y,Real Acceleration X,Real Acceleration Y,L2 Norm,Penalty,CAM Sent" << std::endl;
+	positioned_ << "Simulation Time,Delta Time,Predicted Position X,Predicted Position Y,Real Postition X,Real Position Y,Real Position Latitude,Real Position Longitude,Predicted Speed X,Predicted Speed Y,Real Speed X,Real Speed Y,Real Acceleration X,Real Acceleration Y,L2 Norm,CAM Sent" << std::endl;
 }
 
 void YuCaService::trigger()
@@ -354,7 +354,6 @@ void YuCaService::checkTriggeringConditions(const SimTime& T_now)
 	positioned_ << current_acceleration.x << ",";
 	positioned_ << current_acceleration.y << ",";
 	positioned_ << final_value << ",";
-	positioned_ << std::to_string(penalty) << ",";
 	positioned_ << cam_sent << std::endl;
 }
 
